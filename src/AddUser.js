@@ -13,6 +13,25 @@ export default class AddUser extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  checkUser(user) {
+    console.log("checkuser ", user);
+    console.log(this.props.userData.length);
+
+    if (this.props.userData.length >= 1) {
+      this.props.userData.forEach(e => {
+        if (e.uname === user.uname) {
+          console.log("Cant add. Already user exits by same user name");
+        } else {
+          this.props.pushUser(user);
+        }
+      });
+    } else {
+      this.props.pushUser(user);
+      console.log("else");
+    }
+  }
+
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -23,8 +42,9 @@ export default class AddUser extends Component {
     e.preventDefault();
     // get our form data out of state
     const { uname, fname, games } = this.state;
-    console.log(this.props.pushUser);
-    this.props.pushUser({ uname, fname, games });
+
+    this.checkUser({ uname, fname, games });
+    // console.log(this.props.pushUser);
   }
 
   render() {
