@@ -3,11 +3,6 @@ import User from "./User";
 
 export default class AddUser extends Component {
   render() {
-    return (
-      <div>
-        AdddUser
-        <User />
-      </div>
-    );
+    return <div>AdddUser</div>;
   }
 }
