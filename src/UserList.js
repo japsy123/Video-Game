@@ -3,14 +3,14 @@ import React, { Component } from "react";
 export default class UserList extends Component {
   allUsers() {
     if (this.props.userData) {
-      this.props.userData.map(user => (
+      return this.props.userData.map(user => (
         <div>
           <p>*********************</p>
-          <li>Username: {user.username}</li>
-          <li>FirstName: {user.firstName}</li>
+          <li>Username: {user.uname}</li>
+          <li>FirstName: {user.fname}</li>
           <li>
             <button> Show no. of games</button>
-            <p>{this.selected && <p>{user.noOfGames}</p>}</p>
+            <p>{this.selected && <p>{user.games}</p>}</p>
           </li>
           <p>*********************</p>
         </div>

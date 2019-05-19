@@ -30,6 +30,7 @@ class App extends React.Component {
     return (
       <div>
         <AddUser pushUser={this.pushUser} />
+        <UserList userData={this.state.userData} />
       </div>
     );
   }
