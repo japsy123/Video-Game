@@ -15,9 +15,6 @@ export default class AddUser extends Component {
   }
 
   checkUser(user) {
-    console.log("checkuser ", user);
-    console.log(this.props.userData.length);
-
     if (this.props.userData.length >= 1) {
       this.props.userData.forEach(e => {
         if (e.uname === user.uname) {
@@ -28,28 +25,35 @@ export default class AddUser extends Component {
       });
     } else {
       this.props.pushUser(user);
-      console.log("else");
     }
   }
 
   onChange(e) {
+    console.log("target ", e.target.value.length);
+
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
+  isDisabled() {
+    const { uname, fname } = this.state;
+    return uname === "" || fname === "";
+  }
   onSubmit(e) {
     e.preventDefault();
     // get our form data out of state
+
     const { uname, fname, games } = this.state;
 
-    this.checkUser({ uname, fname, games });
+    if (uname.length >= 1 && fname.length >= 1) {
+      this.checkUser({ uname, fname, games });
+    }
+
     // console.log(this.props.pushUser);
   }
 
   render() {
-    const { uname, fname } = this.state;
-
     return (
       <div>
         <h1>***Add a new User***</h1>
@@ -57,17 +61,19 @@ export default class AddUser extends Component {
           <input
             type="text"
             name="uname"
-            value={uname}
+            value={this.state.uname}
             onChange={this.onChange}
           />
           <input
             type="text"
             name="fname"
-            value={fname}
+            value={this.state.fname}
             onChange={this.onChange}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={this.isDisabled()}>
+            Submit
+          </button>
         </form>
       </div>
     );

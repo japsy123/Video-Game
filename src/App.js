@@ -8,13 +8,13 @@ Great job, Jal coming this far!!! Awesome!! Bravo!! But, as usual keep continuin
 
 Things to do:-
 1. Validation -  Each username has to be unique -Done
-2. If someone tries to add a user when one of the fields is empty, the "Add" button should be disabled.
+2. If someone tries to add a user when one of the fields is empty, the "Add" button should be disabled. -- Done
 3. Button logic for User List -We should also have a button that lets us toggle between showing and hiding
 the number of games the users have played. For example, the button can start
 out as "Hide the Number of Games Played" and the app can display "username1
 played 0 games." Clicking that button should change the button text to
 "Show the Number of Games Played" and the displayed username and score can be
-changed to "username1 played \* games
+changed to "username1 played \* games -- Done
 
 */
 class App extends React.Component {
@@ -22,8 +22,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      userData: [],
-      selected: false
+      userData: []
     };
     this.pushUser = this.pushUser.bind(this);
   }
@@ -35,7 +34,7 @@ class App extends React.Component {
         userData: [...this.state.userData, user]
       }),
       () => {
-        console.log("Push user from app ", this.state.userData);
+        // console.log("Push user from app ", this.state.userData);
       }
     );
   }
